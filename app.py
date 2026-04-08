@@ -239,7 +239,7 @@ if uploaded_file is not None:
             df[numeric_cols] = df[numeric_cols].fillna(df[numeric_cols].mean())
             st.session_state.df = df
             st.success("✅ Missing values filled with mean!")
-            st.rerun()
+            st.experimental_rerun()
     
     with col2:
         if st.button("🔧 Fix Negatives (Set to 0)"):
@@ -247,7 +247,7 @@ if uploaded_file is not None:
             df[numeric_cols] = df[numeric_cols].clip(lower=0)
             st.session_state.df = df
             st.success("✅ Negative values fixed!")
-            st.rerun()
+            st.experimental_rerun()
     
     with col3:
         if st.button("📈 Cap Outliers (Set to 100)"):
@@ -255,7 +255,7 @@ if uploaded_file is not None:
             df[numeric_cols] = df[numeric_cols].clip(upper=100)
             st.session_state.df = df
             st.success("✅ Outliers capped!")
-            st.rerun()
+            st.experimental_rerun()
     
     with col4:
         if st.button("🗑️ Remove Rows with Missing"):
@@ -264,7 +264,7 @@ if uploaded_file is not None:
             after = len(df)
             st.session_state.df = df
             st.success(f"✅ Removed {before - after} rows with missing values!")
-            st.rerun()
+            st.experimental_rerun()
     
     # AI Agent Section
     st.subheader("🤖 AI Auto Clean Agent")
@@ -284,7 +284,7 @@ if uploaded_file is not None:
                 st.session_state.total_reward = total_reward
                 
                 st.success(f"✅ AI Agent completed {len(actions)} actions!")
-                st.rerun()
+                st.experimental_rerun()
     
     with col2:
         if st.button("🔄 Reset to Original Data", use_container_width=True):
@@ -293,7 +293,7 @@ if uploaded_file is not None:
             st.session_state.actions_history = []
             st.session_state.total_reward = 0
             st.success("✅ Reset to original data!")
-            st.rerun()
+            st.experimental_rerun()
     
     # Display Actions History
     if st.session_state.cleaned and len(st.session_state.actions_history) > 0:
